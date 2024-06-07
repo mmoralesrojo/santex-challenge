@@ -34,21 +34,29 @@ You will be asked for the following input:
 
 `Default output format: json`
 
-After completing the above instructions you will be able to run the Serverless project locally using the serverless-offline plugin by running the following command
-
-```bash
-  npm start
-```
 ## Deployment
 
-To deploy this project in a AWS Stack you need to run the follwing
+For deployment in AWS you need to do changes and test with AWS url run the following again
 
 ```bash
   npm run deploy
 ```
-## Postman
 
-You can access my public Postman collection to test this [here](https://elements.getpostman.com/redirect?entityId=6789712-fe1ab1dc-2c20-4075-ac43-97b3f3430631&entityType=collection)
+## Serverless offline
+
+After deployment you can test the endpoints locally by running the following
+
+```bash
+  npm start
+```
+
+## Testing
+
+Documentation in serverless.yaml has been added and it can be exported through AWS API Gateway Service and import it to [online swagger editor](https://editor.swagger.io/)
+
+However I already prepared a swagger documentation with the exported file from AWS API Gateway Service and you can find it [here](https://editor.swagger.io/?url=https://swagger-santex.s3.amazonaws.com/dev-santex-challenge-dev-swagger.json)
+
+Also you can access my public Postman collection for this challenge [here](https://elements.getpostman.com/redirect?entityId=6789712-fe1ab1dc-2c20-4075-ac43-97b3f3430631&entityType=collection)
 
 ## Authors
 

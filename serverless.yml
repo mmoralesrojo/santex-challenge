@@ -1,5 +1,5 @@
 service: santex-challenge
-frameworkVersion: "3"
+frameworkVersion: '3'
 
 provider:
   name: aws
@@ -27,7 +27,15 @@ resources:
 
 custom:
   dynamoTableTodos: ${self:provider.stage}-Todos
-
+  documentation:
+    api:
+      info:
+        version: '1.0.0'
+        title: 'Serverless Home Challenge'
+        description: 'Serverless Home Challenge'
+    models: ${file(serverless/models.yml)}
+      
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-aws-documentation

@@ -7,6 +7,10 @@ export const getTodos = async () => {
     const data: any = await getTodosController();
     return {
       statusCode: StatusCodes.OK,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({ data }, null, 2)
     };
   }
@@ -16,6 +20,10 @@ export const getTodos = async () => {
     }
     return {
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify(response, null, 2)
     };
   }
@@ -30,12 +38,20 @@ export const getTodo = async (event: any) => {
     if (!data) {
       return {
         statusCode: StatusCodes.NOT_FOUND,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify({ message: `Todo with id ${id} not found` }, null, 2)
       };
     }
 
     return {
       statusCode: StatusCodes.OK,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({ data }, null, 2)
     };
   } catch (err) {
@@ -44,6 +60,10 @@ export const getTodo = async (event: any) => {
     }
     return {
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify(response, null, 2)
     };
   }
@@ -57,6 +77,10 @@ export const createTodo = async (event: any) => {
   if (!title) {
     return {
       statusCode: StatusCodes.BAD_REQUEST,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({ message: 'Title is required' }, null, 2)
     };
   }
@@ -66,6 +90,10 @@ export const createTodo = async (event: any) => {
 
     return {
       statusCode: StatusCodes.OK,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({ todo }, null, 2),
     };
   } catch (err) {
@@ -74,6 +102,10 @@ export const createTodo = async (event: any) => {
     }
     return {
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify(response, null, 2)
     };
   }
@@ -87,6 +119,10 @@ export const updateTodo = async (event: any) => {
   if (!title && !data.hasOwnProperty('completed')) {
     return {
       statusCode: StatusCodes.BAD_REQUEST,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({ message: 'Missing valid attributes' }, null, 2)
     };
   }
@@ -94,6 +130,10 @@ export const updateTodo = async (event: any) => {
     const updatedTodo = await updateTodoController(id, data);
     return {
       statusCode: StatusCodes.OK,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({
         todo: updatedTodo.Attributes
       }, null, 2),
@@ -102,11 +142,19 @@ export const updateTodo = async (event: any) => {
     if (err instanceof NotFoundError) {
       return {
         statusCode: StatusCodes.NOT_FOUND,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify({ message: err.message }, null, 2)
       };
     }
     return {
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({
         message: `An error occurred while creating todo: ${err}`
       }, null, 2)
@@ -121,24 +169,39 @@ export const deleteTodo = async (event: any) => {
     await deleteTodoController(id);
 
     return {
-      statusCode: StatusCodes.OK,
-      body: JSON.stringify({}, null, 2),
+      statusCode: StatusCodes.NO_CONTENT,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      }
     };
   } catch (err) {
     if (err instanceof NotFoundError) {
       return {
         statusCode: StatusCodes.NOT_FOUND,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify({ message: err.message }, null, 2)
       };
     }
     if (err instanceof ForbiddenError) {
       return {
         statusCode: StatusCodes.FORBIDDEN,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify({ message: err.message }, null, 2)
       };
     }
     return {
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
       body: JSON.stringify({
         message: `An error occurred while creating todo: ${err}`
       }, null, 2)

@@ -1,0 +1,89 @@
+- name: 'Todo'
+  description: 'A Todo item'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+      title:
+        type: 'string'
+      completed:
+        type: 'boolean'
+      metadata:
+        type: 'object'
+        properties:
+          createdAt:
+            type: 'string'
+            format: 'date-time'
+          updatedAt:
+            type: 'string'
+            format: 'date-time'
+- name: 'GetTodosResponse'
+  description: 'Get todos response'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      data:
+        type: 'object'
+        properties:
+          todos:
+            type: 'array'
+            items:
+              $ref: '{{model: Todo}}'
+          count:
+            type: 'number'
+- name: 'GetTodoResponse'
+  description: 'Get single todo response'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      data:
+        type: 'object'
+        properties:
+          todo:
+            $ref: '{{model: Todo}}'
+- name: 'CreateTodoRequest'
+  description: 'Create a single todo request'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      title:
+        type: 'string'
+- name: 'CreateTodoResponse'
+  description: 'Create a single todo response'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      todo:
+        $ref: '{{model: Todo}}'
+- name: 'UpdateTodoRequest'
+  description: 'Update a single todo request'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      title:
+        type: 'string'
+      completed:
+        type: 'boolean'
+- name: 'UpdateTodoResponse'
+  description: 'Update a single todo response'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      todo:
+        $ref: '{{model: Todo}}'
+- name: 'ErrorResponse'
+  description: 'Error message'
+  contentType: 'application/json'
+  schema:
+    type: 'object'
+    properties:
+      todo:
+        $ref: '{{model: Todo}}'
