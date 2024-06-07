@@ -21,7 +21,7 @@ Next we will need configure access key and secret for AWS account, you will need
 Having your aws_access_key_id and aws_secret_access_key you will need to configure them in a AWS profile. For that run the following in a terminal
 
 ```bash
-  aws configure --profile santex
+  aws configure
 ```
 
 You will be asked for the following input:

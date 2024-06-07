@@ -4,8 +4,8 @@
   "description": "Santex Home Challenge",
   "main": "index.ts",
   "scripts": {
-    "start": "sls offline --aws-profile santex --stage dev",
-    "deploy": "sls deploy --aws-profile santex --stage dev",
+    "start": "sls offline --stage dev",
+    "deploy": "sls deploy --stage dev",
     "test": "jest --coverage",
     "clean": "rm -rf .serverless & rm -rf .build & rm -rf node_modules"
   },

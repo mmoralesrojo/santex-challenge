@@ -85,5 +85,5 @@
   schema:
     type: 'object'
     properties:
-      todo:
-        $ref: '{{model: Todo}}'
+      message:
+        type: 'string'
