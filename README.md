@@ -1,7 +1,7 @@
 
 # Santex Serverless Home Challenge
 
-First of all, thanks a lot for the opportunity your time to review my code of the Serverless Home Challenge.
+First of all, thanks a lot for the opportunity and your time to review my code of the Serverless Home Challenge.
 
 
 ## Installation
