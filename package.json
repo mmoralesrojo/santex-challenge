@@ -1,0 +1,31 @@
+{
+  "name": "santex-challenge",
+  "version": "1.0.0",
+  "description": "Santex Home Challenge",
+  "main": "index.ts",
+  "scripts": {
+    "start": "sls offline --aws-profile santex --stage dev",
+    "deploy": "sls deploy --aws-profile santex --stage dev",
+    "test": "jest --coverage",
+    "clean": "rm -rf .serverless & rm -rf .build & rm -rf node_modules"
+  },
+  "author": "Miguel Morales",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.2",
+    "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "serverless-offline": "^13.6.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "ts-jest": "^29.1.4",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.590.0",
+    "@aws-sdk/lib-dynamodb": "^3.590.0",
+    "http-status-codes": "^2.3.0",
+    "uuid": "^9.0.1"
+  }
+}

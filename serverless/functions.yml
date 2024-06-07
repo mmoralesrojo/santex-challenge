@@ -1,0 +1,35 @@
+getTodos:
+  handler: handler.getTodos
+  name: ${self:service}-${self:provider.stage}-gettodos
+  events:
+    - http:
+        path: /santex/todo
+        method: get
+getTodo:
+  handler: handler.getTodo
+  name: ${self:service}-${self:provider.stage}-gettodo
+  events:
+    - http:
+        path: /santex/todo/{id}
+        method: get
+createTodo:
+  handler: handler.createTodo
+  name: ${self:service}-${self:provider.stage}-createtodo
+  events:
+    - http:
+        path: /santex/todo
+        method: post
+updateTodo:
+  handler: handler.updateTodo
+  name: ${self:service}-${self:provider.stage}-updatetodo
+  events:
+    - http:
+        path: /santex/todo/{id}
+        method: patch
+deleteTodo:
+  handler: handler.deleteTodo
+  name: ${self:service}-${self:provider.stage}-deletetodo
+  events:
+    - http:
+        path: /santex/todo/{id}
+        method: delete

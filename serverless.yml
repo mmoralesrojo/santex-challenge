@@ -1,0 +1,33 @@
+service: santex-challenge
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    DYNAMO_TABLE_TODOS: ${self:custom.dynamoTableTodos}
+    AWS_SELECTED_REGION: ${self:provider.region}
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:Query'
+        - 'dynamodb:Scan'
+        - 'dynamodb:GetItem'
+        - 'dynamodb:PutItem'
+        - 'dynamodb:UpdateItem'
+        - 'dynamodb:DeleteItem'
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.dynamoTableTodos}'
+
+functions: ${file(serverless/functions.yml)}
+
+resources:
+  Resources: ${file(serverless/resources.yml)}
+
+custom:
+  dynamoTableTodos: ${self:provider.stage}-Todos
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
